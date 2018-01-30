@@ -14,6 +14,11 @@ namespace ClassRoom
 
         public Student(string name, int birthMonth, int birthDay)
         {
+            if (birthMonth < 1 || birthMonth > 12)
+            {
+                throw new ArgumentOutOfRangeException(nameof(birthMonth), "must be in inclusive interval 1-12 corresponding to months in a year");
+            }
+
             Name = name;
             BirthMonth = birthMonth;
             BirthDay = birthDay;
