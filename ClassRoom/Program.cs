@@ -28,6 +28,9 @@ namespace ClassRoom
             {
                 Console.WriteLine($"\t{s.Name} (birth day/month): {s.BirthDay}/{s.BirthMonth}");
             }
+            Console.WriteLine();
+
+            PrintBirthdaysPerSeason(classRoom.Students);
         }
 
         static string Season(Student s)
@@ -50,7 +53,23 @@ namespace ClassRoom
                 case 10:
                 case 11:
                     return "Fall";
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(s), "must be in inclusive interval 1-12 corresponding to months in a year");
             }
+        }
+
+        static void PrintBirthdaysPerSeason(IEnumerable<Student> students)
+        {
+            var winter = students.Where(s => Season(s) == "Winter").Count();
+            var spring = students.Where(s => Season(s) == "Spring").Count();
+            var summer = students.Where(s => Season(s) == "Summer").Count();
+            var fall = students.Where(s => Season(s) == "Fall").Count();
+
+            Console.WriteLine("Student birthdays per season:");
+            Console.WriteLine($"Winter\t{winter}");
+            Console.WriteLine($"Spring\t{spring}");
+            Console.WriteLine($"Summer\t{summer}");
+            Console.WriteLine($"Fall\t{fall}");
         }
     }
 }
