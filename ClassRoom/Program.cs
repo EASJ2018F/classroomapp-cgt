@@ -20,6 +20,14 @@ namespace ClassRoom
                     new Student("Foo", 1, 1),
                 },
             };
+
+            Console.WriteLine($"Class room name: {classRoom.Name}");
+            Console.WriteLine($"Semester start: {classRoom.SemesterStart}");
+            Console.WriteLine("Students:");
+            foreach (var s in classRoom.Students)
+            {
+                Console.WriteLine($"\t{s.Name} (birth day/month): {s.BirthDay}/{s.BirthMonth}");
+            }
         }
     }
 }
